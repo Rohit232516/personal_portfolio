@@ -6,8 +6,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #050509;
-  color: #f4f4f8;
+  background: #ffffff;
+  color: #0f172a;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,39 +16,39 @@ body {
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar         { width: 5px; }
-::-webkit-scrollbar-track   { background: transparent; }
-::-webkit-scrollbar-thumb   { background: rgba(99,102,241,0.5); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.8); }
+::-webkit-scrollbar-track   { background: #f1f5f9; }
+::-webkit-scrollbar-thumb   { background: rgba(37,99,235,0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(37,99,235,0.6); }
 
 /* ── Selection ───────────────────────────────────────────────────────────── */
-::selection { background: #6366f1; color: #fff; }
+::selection { background: #2563eb; color: #fff; }
 
 /* ── Gradient text utility ───────────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0ea5e9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Animated background (hero only) ────────────────────────────────────── */
+/* ── Hero gradient (light, subtle) ──────────────────────────────────────── */
 @keyframes bgShift {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 .animated-gradient {
-  background: linear-gradient(-45deg, #050509, #0c0c1a, #080814, #060610);
+  background: linear-gradient(-45deg, #f0f4ff, #eef2ff, #f5f8ff, #eff6ff);
   background-size: 400% 400%;
-  animation: bgShift 18s ease infinite;
+  animation: bgShift 22s ease infinite;
 }
 
-/* ── Glass surface ───────────────────────────────────────────────────────── */
+/* ── Subtle card surface ─────────────────────────────────────────────────── */
 .glass {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(37,99,235,0.10);
 }
 
 /* ── Tag / pill ──────────────────────────────────────────────────────────── */
@@ -60,20 +60,20 @@ body {
   font-weight: 500;
   line-height: 1;
   border-radius: 9999px;
-  border: 1px solid rgba(99,102,241,0.20);
-  background: rgba(99,102,241,0.10);
-  color: #a5b4fc;
+  border: 1px solid rgba(37,99,235,0.18);
+  background: rgba(37,99,235,0.06);
+  color: #1d4ed8;
   white-space: nowrap;
 }
 
-/* ── Ambient glow orb ────────────────────────────────────────────────────── */
+/* ── Soft ambient orb ────────────────────────────────────────────────────── */
 .glow-orb {
   position: absolute;
   border-radius: 9999px;
   pointer-events: none;
   width: 480px;
   height: 480px;
-  background: rgba(79,70,229,0.04);
+  background: rgba(37,99,235,0.04);
   filter: blur(100px);
 }
 

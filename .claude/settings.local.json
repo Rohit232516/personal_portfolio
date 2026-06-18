@@ -5,7 +5,10 @@
       "Bash(npm install:*)",
       "Bash(npm run:*)",
       "Bash(node -e \"const l = require\\('lucide-react'\\); console.log\\(Object.keys\\(l\\).filter\\(k => k.toLowerCase\\(\\).includes\\('link'\\) || k.toLowerCase\\(\\).includes\\('social'\\)\\)\\)\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(identify \"/Users/rohitreddy/Desktop/personal_portfoio/public/images/profile.jpg\")",
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\('/Users/rohitreddy/Desktop/personal_portfoio/public/images/profile.jpg'\\); print\\(img.size\\)\")",
+      "Bash(sips *)"
     ]
   }
 }

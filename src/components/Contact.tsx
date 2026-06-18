@@ -7,7 +7,6 @@ import { Mail, Send, CheckCircle, MapPin, Phone, Link2 } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { card, btn, input, type as t } from "@/lib/tokens";
 
-/* ─── Data ─────────────────────────────────────────────────────────────── */
 const contactItems = [
   {
     icon: Mail,
@@ -35,7 +34,6 @@ const contactItems = [
   },
 ];
 
-/* ─── Component ─────────────────────────────────────────────────────────── */
 export default function Contact() {
   const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -63,8 +61,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="relative py-24 md:py-32 bg-[#050509] overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />
+    <section id="contact" ref={ref} className="relative py-24 md:py-32 bg-white overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <div className="glow-orb bottom-0 right-0" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -76,21 +74,20 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-5 gap-10">
 
-          {/* ── Left: contact info ───────────────────────────────────── */}
+          {/* Left: contact info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.18 }}
             className="lg:col-span-2 flex flex-col gap-8"
           >
-            {/* Info list */}
             {contactItems.map((item) => (
               <div key={item.label} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
                   <item.icon size={18} />
                 </div>
                 <div>
-                  <p className={t.capsLabel + " !text-zinc-600 mb-1"}>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400 mb-1">
                     {item.label}
                   </p>
                   {item.href ? (
@@ -98,19 +95,18 @@ export default function Contact() {
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel="noreferrer"
-                      className="text-sm text-white hover:text-indigo-400 transition-colors duration-200 font-medium"
+                      className="text-sm text-slate-800 hover:text-blue-600 transition-colors duration-200 font-medium"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-sm text-white font-medium">{item.value}</p>
+                    <p className="text-sm text-slate-800 font-medium">{item.value}</p>
                   )}
                 </div>
               </div>
             ))}
 
-            {/* CTA buttons */}
-            <div className="flex flex-col gap-3 pt-2 border-t border-white/[0.07]">
+            <div className="flex flex-col gap-3 pt-2 border-t border-slate-100">
               <motion.a
                 whileHover={{ x: 3 }}
                 href="mailto:naushad.kh@bennett.edu.in"
@@ -132,7 +128,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* ── Right: form ──────────────────────────────────────────── */}
+          {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -143,17 +139,14 @@ export default function Contact() {
               <motion.div
                 initial={{ scale: 0.94, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className={`flex flex-col items-center justify-center text-center p-12 rounded-2xl border border-emerald-500/[0.20] bg-emerald-500/[0.04]`}
+                className="flex flex-col items-center justify-center text-center p-12 rounded-2xl border border-emerald-200 bg-emerald-50"
               >
-                <CheckCircle size={48} className="text-emerald-400 mb-6" />
+                <CheckCircle size={48} className="text-emerald-500 mb-6" />
                 <h3 className={`${t.h3} mb-2`}>Message Sent!</h3>
                 <p className={`${t.cardBody} mb-8 max-w-xs`}>
                   Thank you for reaching out. Naushad will reply within 24 hours.
                 </p>
-                <button
-                  onClick={() => setSent(false)}
-                  className={btn.secondary}
-                >
+                <button onClick={() => setSent(false)} className={btn.secondary}>
                   Send Another
                 </button>
               </motion.div>
@@ -171,7 +164,7 @@ export default function Contact() {
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className={input}
                     />
-                    {errors.name && <p className="text-red-400 text-[11px] mt-1.5">{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 text-[11px] mt-1.5">{errors.name}</p>}
                   </div>
                   <div>
                     <input
@@ -181,7 +174,7 @@ export default function Contact() {
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className={input}
                     />
-                    {errors.email && <p className="text-red-400 text-[11px] mt-1.5">{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 text-[11px] mt-1.5">{errors.email}</p>}
                   </div>
                 </div>
 
@@ -190,11 +183,9 @@ export default function Contact() {
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
                   className={`${input} appearance-none`}
                 >
-                  <option value="" style={{ background: "#0a0a10", color: "#71717a" }}>
-                    Select Subject
-                  </option>
+                  <option value="">Select Subject</option>
                   {["Corporate Partnership", "Campus Placement Collaboration", "Student Opportunity", "Speaking Engagement", "Other"].map((s) => (
-                    <option key={s} value={s} style={{ background: "#0a0a10" }}>{s}</option>
+                    <option key={s} value={s}>{s}</option>
                   ))}
                 </select>
 
@@ -206,7 +197,7 @@ export default function Contact() {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className={`${input} resize-none`}
                   />
-                  {errors.message && <p className="text-red-400 text-[11px] mt-1.5">{errors.message}</p>}
+                  {errors.message && <p className="text-red-500 text-[11px] mt-1.5">{errors.message}</p>}
                 </div>
 
                 <motion.button
@@ -217,7 +208,7 @@ export default function Contact() {
                   className={`w-full ${btn.primary} disabled:opacity-55 disabled:cursor-not-allowed`}
                 >
                   {loading ? (
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
                   ) : (
                     <><Send size={16} /> Send Message</>
                   )}

@@ -7,7 +7,6 @@ import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { card, btn, type as t } from "@/lib/tokens";
 
-/* ─── Data ─────────────────────────────────────────────────────────────── */
 const testimonials = [
   {
     id: 1,
@@ -71,10 +70,9 @@ const testimonials = [
   },
 ];
 
-/* Stars helper */
 function Stars({ count = 5, size = 14 }: { count?: number; size?: number }) {
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
         <Star key={i} size={size} className="text-amber-400 fill-amber-400" />
       ))}
@@ -82,7 +80,6 @@ function Stars({ count = 5, size = 14 }: { count?: number; size?: number }) {
   );
 }
 
-/* ─── Component ─────────────────────────────────────────────────────────── */
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
@@ -101,11 +98,9 @@ export default function Testimonials() {
   const active = testimonials[current];
 
   return (
-    <section id="testimonials" ref={ref} className="relative py-24 md:py-32 bg-[#08080f] overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="glow-orb !relative" />
-      </div>
+    <section id="testimonials" ref={ref} className="relative py-24 md:py-32 bg-slate-50 overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="glow-orb absolute inset-0 m-auto !relative" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
@@ -116,7 +111,7 @@ export default function Testimonials() {
 
         <div className="grid lg:grid-cols-3 gap-6 items-start">
 
-          {/* ── Main card ───────────────────────────────────────────── */}
+          {/* Main card */}
           <div className="lg:col-span-2">
             <AnimatePresence mode="wait">
               <motion.div
@@ -127,37 +122,33 @@ export default function Testimonials() {
                 transition={{ duration: 0.35 }}
                 className={`relative ${card.padding} ${card.base} overflow-hidden`}
               >
-                {/* Watermark quote */}
                 <Quote
                   size={72}
-                  className="absolute top-4 right-6 text-indigo-400/[0.08] pointer-events-none"
+                  className="absolute top-4 right-6 text-blue-100 pointer-events-none"
                 />
 
                 <Stars size={15} />
 
-                <blockquote className={`mt-6 mb-8 ${t.body} !text-zinc-300 italic`}>
+                <blockquote className={`mt-6 mb-8 ${t.body} !text-slate-700 italic`}>
                   &ldquo;{active.quote}&rdquo;
                 </blockquote>
 
-                {/* Author */}
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-[13px] flex-shrink-0 shadow-md shadow-indigo-500/25">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white font-bold text-[13px] flex-shrink-0 shadow-md shadow-blue-500/20">
                     {active.initials}
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-[15px]">{active.name}</p>
+                    <p className="text-slate-900 font-semibold text-[15px]">{active.name}</p>
                     <p className={t.cardBody}>{active.role} · {active.company}</p>
                     <p className={t.muted + " mt-0.5"}>{active.batch}</p>
                   </div>
                 </div>
 
-                {/* Navigation */}
-                <div className="flex items-center gap-3 mt-8 pt-6 border-t border-white/[0.07]">
+                <div className="flex items-center gap-3 mt-8 pt-6 border-t border-slate-100">
                   <button onClick={prev} className={btn.icon}>
                     <ChevronLeft size={17} />
                   </button>
 
-                  {/* Progress dots */}
                   <div className="flex-1 flex items-center gap-1.5">
                     {testimonials.map((_, i) => (
                       <button
@@ -165,8 +156,8 @@ export default function Testimonials() {
                         onClick={() => go(i)}
                         className={`h-1 rounded-full transition-all duration-300 ${
                           i === current
-                            ? "bg-indigo-500 flex-1"
-                            : "bg-white/[0.15] w-4 hover:bg-white/[0.3]"
+                            ? "bg-blue-600 flex-1"
+                            : "bg-slate-200 w-4 hover:bg-slate-300"
                         }`}
                       />
                     ))}
@@ -180,7 +171,7 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
 
-          {/* ── Mini stack ──────────────────────────────────────────── */}
+          {/* Mini stack */}
           <div className="flex flex-col gap-3">
             {testimonials
               .filter((_, i) => i !== current)
@@ -189,19 +180,19 @@ export default function Testimonials() {
                 <motion.div
                   key={test.id}
                   whileHover={{ x: 3 }}
-                  onClick={() => go(testimonials.findIndex((t) => t.id === test.id))}
+                  onClick={() => go(testimonials.findIndex((tm) => tm.id === test.id))}
                   className={`${card.paddingSm} ${card.base} ${card.hover} cursor-pointer`}
                 >
                   <Stars count={5} size={11} />
-                  <p className="mt-2 mb-3 text-xs text-zinc-500 leading-relaxed line-clamp-3">
+                  <p className="mt-2 mb-3 text-xs text-slate-500 leading-relaxed line-clamp-3">
                     &ldquo;{test.quote}&rdquo;
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0">
                       {test.initials}
                     </div>
                     <div>
-                      <p className="text-zinc-300 text-xs font-medium">{test.name}</p>
+                      <p className="text-slate-700 text-xs font-medium">{test.name}</p>
                       <p className={t.muted}>{test.company}</p>
                     </div>
                   </div>
