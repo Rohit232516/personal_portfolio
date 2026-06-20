@@ -42,6 +42,11 @@ const featured = [
     logo: "https://upload.wikimedia.org/wikipedia/en/3/3c/Flipkart_logo.svg",
     highlight: null,
   },
+  {
+    name: "Salesforce",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg",
+    highlight: null,
+  },
 ];
 
 /* ─── Additional companies for the scrolling strip ─────────────────────── */
@@ -102,7 +107,7 @@ export default function CompanyNetwork() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: 0.06 + i * 0.07 }}
               whileHover={{ y: -4 }}
-              className={`relative flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border bg-white transition-all duration-300 ${
+              className={`relative flex flex-col items-center justify-center gap-2 p-4 sm:p-6 rounded-2xl border bg-white transition-all duration-300 ${
                 company.name === "Meta"
                   ? "border-blue-200 shadow-md shadow-blue-100 ring-1 ring-blue-100"
                   : "border-slate-200 shadow-sm hover:border-blue-200 hover:shadow-md"
@@ -120,7 +125,9 @@ export default function CompanyNetwork() {
                   <span className="text-base font-bold text-slate-700">{company.name}</span>
                 )}
               </div>
-              <p className="text-[13px] font-medium text-slate-500">{company.name}</p>
+              {company.logo && (
+                <p className="text-[12px] font-medium text-slate-500">{company.name}</p>
+              )}
               {company.highlight && (
                 <span className="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">
                   {company.highlight}
@@ -147,7 +154,7 @@ export default function CompanyNetwork() {
 
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
             className="flex"
           >
             {strip.map((c, i) => (
