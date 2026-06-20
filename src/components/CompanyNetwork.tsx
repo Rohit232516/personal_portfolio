@@ -38,8 +38,8 @@ const featured = [
     highlight: null,
   },
   {
-    name: "Flipkart",
-    logo: "https://upload.wikimedia.org/wikipedia/en/3/3c/Flipkart_logo.svg",
+    name: "IBM",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
     highlight: null,
   },
   {
