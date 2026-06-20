@@ -89,10 +89,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.64 }}
-          className="inline-flex flex-wrap items-center justify-center gap-x-0 gap-y-4 mb-12 bg-white/80 border border-slate-200 rounded-2xl px-6 py-4 shadow-sm divide-x divide-slate-200"
+          className="grid grid-cols-2 sm:grid-cols-4 mb-12 bg-white/80 border border-slate-200 rounded-2xl shadow-sm overflow-hidden"
         >
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center px-6 first:pl-0 last:pr-0">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`text-center px-4 py-5 ${
+                i % 2 === 0 ? "border-r border-slate-200" : ""
+              } ${i < 2 ? "border-b border-slate-200 sm:border-b-0" : ""} ${
+                i < 3 ? "sm:border-r sm:border-slate-200" : ""
+              }`}
+            >
               <div className="text-2xl md:text-3xl font-bold gradient-text">
                 {stat.value}
               </div>
