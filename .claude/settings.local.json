@@ -8,7 +8,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
       "Bash(identify \"/Users/rohitreddy/Desktop/personal_portfoio/public/images/profile.jpg\")",
       "Bash(python3 -c \"from PIL import Image; img = Image.open\\('/Users/rohitreddy/Desktop/personal_portfoio/public/images/profile.jpg'\\); print\\(img.size\\)\")",
-      "Bash(sips *)"
+      "Bash(sips *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
