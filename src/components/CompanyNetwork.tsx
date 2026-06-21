@@ -49,16 +49,9 @@ const featured = [
   },
 ];
 
-/* ─── Additional companies for the scrolling strip ─────────────────────── */
-const others = [
-  { name: "Microsoft",    logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" },
-  { name: "Uber",         logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" },
-  { name: "Zomato",       logo: "https://upload.wikimedia.org/wikipedia/en/7/75/Zomato_logo.png" },
-  { name: "Zerodha",      logo: "https://upload.wikimedia.org/wikipedia/commons/9/97/Zerodha_logo.svg" },
-  { name: "Groww",        logo: "https://upload.wikimedia.org/wikipedia/commons/7/74/Groww_app_logo.png" },
-];
-
-const strip = [...others, ...others];
+/* ─── Scrolling strip — built from the featured recruiters above ────────── */
+/* Only companies with real logos; doubled for a seamless infinite loop.    */
+const strip = [...featured, ...featured];
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   return (
