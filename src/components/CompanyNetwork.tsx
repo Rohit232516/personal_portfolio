@@ -33,11 +33,6 @@ const featured = [
     highlight: null,
   },
   {
-    name: "Intuit",
-    logo: null,
-    highlight: null,
-  },
-  {
     name: "IBM",
     logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
     highlight: null,
@@ -45,6 +40,11 @@ const featured = [
   {
     name: "Salesforce",
     logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg",
+    highlight: null,
+  },
+  {
+    name: "Microsoft",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
     highlight: null,
   },
 ];
@@ -56,9 +56,6 @@ const others = [
   { name: "Zomato",       logo: "https://upload.wikimedia.org/wikipedia/en/7/75/Zomato_logo.png" },
   { name: "Zerodha",      logo: "https://upload.wikimedia.org/wikipedia/commons/9/97/Zerodha_logo.svg" },
   { name: "Groww",        logo: "https://upload.wikimedia.org/wikipedia/commons/7/74/Groww_app_logo.png" },
-  { name: "Wingify",      logo: null },
-  { name: "Rubrik",       logo: null },
-  { name: "AlphaGrep",    logo: null },
 ];
 
 const strip = [...others, ...others];
@@ -152,39 +149,23 @@ export default function CompanyNetwork() {
           <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="flex"
-          >
+          <div className="animate-marquee">
             {strip.map((c, i) => (
               <div
                 key={`strip-${i}`}
                 className="flex-shrink-0 w-[9rem] h-14 mx-2 rounded-xl border border-slate-100 bg-slate-50 flex items-center justify-center overflow-hidden"
               >
-                {c.logo ? (
-                  <div className="relative w-[5rem] h-7">
-                    <Image
-                      src={c.logo}
-                      alt={c.name}
-                      fill
-                      className="object-contain opacity-60 hover:opacity-90 transition-opacity duration-300"
-                      onError={(e) => {
-                        const el = e.target as HTMLImageElement;
-                        el.style.display = "none";
-                        const parent = el.parentElement?.parentElement;
-                        if (parent) {
-                          parent.innerHTML = `<span style="color:#64748b;font-size:11px;font-weight:600">${c.name}</span>`;
-                        }
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <span className="text-[12px] font-semibold text-slate-500">{c.name}</span>
-                )}
+                <div className="relative w-[5rem] h-7">
+                  <Image
+                    src={c.logo}
+                    alt={c.name}
+                    fill
+                    className="object-contain opacity-60 hover:opacity-90 transition-opacity duration-300"
+                  />
+                </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
